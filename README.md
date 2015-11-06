@@ -9,7 +9,7 @@ Font icon not not customoizable only images.
 ```
 bower install ng-reactions
 ```
-or alternatively download and include `ng-reactions.js` after `angular.min.js`.
+or alternatively download and include `ngreactions.js` after `angular.min.js`.
 
 Add the `ng-reactions` module as a dependency when creating your app, e.g.
 
