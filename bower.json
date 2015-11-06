@@ -1,0 +1,15 @@
+{
+    "name": "ngreactions",
+ 	"main": "./ngreactions.js",
+	"version": "0.0.1",
+	"keywords": [
+		"angular",
+		"reactions",
+		"reaction rating",
+		"facebook like reactions",
+		"emoji reactions"
+	],
+	  "dependencies": {
+		"angular": "*"
+	  }
+}
