@@ -1,0 +1,25 @@
+{
+  "name": "ngreactions",
+  "main": "./ngreactions.js",
+  "keywords": [
+    "angular",
+    "reactions",
+    "reaction rating",
+    "facebook like reactions",
+    "emoji reactions"
+  ],
+  "dependencies": {
+    "angular": "*"
+  },
+  "homepage": "https://github.com/uttesh/ngreactions",
+  "_release": "ac057b438b",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ac057b438b3f68a9713e8bbdaefc15af03b93013"
+  },
+  "_source": "git://github.com/uttesh/ngreactions.git",
+  "_target": "*",
+  "_originalSource": "ng-reactions",
+  "_direct": true
+}

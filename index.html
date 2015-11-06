@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html ng-app="ngReactionsApp">
+    <head>
+        <meta charset="utf-8" />
+		<meta name="keywords" content="reactions,facebook like reactions,angularjs rating,reactions directive">
+		<meta name="description" content="ng-reactions is angularJS directive which will provide the rating through the reaction of the customer or anything which need rating.
+		inspired from latest facebook reaction menu, using this we can create our own function related reactions and use as rating, images are custamizable ">
+        <title>ngreactions</title>
+        <!--        <link rel="icon" href="static/images/logo.png" type="image/png">-->
+        <script src="static/lib/jquery.js"></script>
+        <script src="static/lib/angular.js"></script>
+        <script src="static/lib/ngreactions/ngreactions.js"></script>
+        <script src="static/js/app.js"></script>
+        <link rel="stylesheet" href="static/css/bootstrap/css/bootstrap-lumen.css" />
+        <link rel="stylesheet" href="static/css/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="static/lib/ngreactions/css/font-reaction/font-reactions.css">
+    </head>
+    <body  style="margin: 0 25px 0; padding: 0 15px 0;">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+            <div class="container" >
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="height: inherit;" href="#"><span class="ra-medium reaction-smile2 ra-smile-color"></span> ng-reactions</a>
+                </div>
+            </div>
+            <a href="https://github.com/uttesh/ngreactions">
+                <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+        </div>
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <h1> <span class="ripple ra-medium reaction-smile2 ra-selected ra-smile-color"></span>  ng-reactions</h1>
+                <p>Simple angularJS directive which will provide the rating through the reaction of the customer or anything which need rating
+                    . inspired from latest facebook reaction menu, using this we can create our own function related reactions and use as rating, images are custamizable </p>
+                <p><a class="btn btn-primary btn-lg" role="button" href="https://codeload.github.com/uttesh/ngreactions/zip/master"><i class="fa fa-download"></i> Download</a></p>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="container">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Icon reaction Sample</h3>
+                    </div>
+                    <div  id="reaction-font-div" class="panel-body" ng-controller="reactionCtrl">
+                        <div ng-repeat="reaction in reactionList">
+                            <ng-reactions 
+                                action="ratingsCallback(reactionsObject,selected)" 
+                                data='reaction' 
+                                type="icon" 
+                                itemset="iconset">
+                            </ng-reactions>
+                        </div>
+                    </div>
+                 </div>
+				
+				<div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Image reaction Sample</h3>
+                    </div>
+                   
+                    <div  id="reaction-div" class="panel-body" ng-controller="reactionCtrl">
+                        <div ng-repeat="reaction in reactionList">
+                            <ng-reactions 
+                                action="ratingsCallback(reactionsObject,selected)" 
+                                data='reaction' 
+                                type="image"  
+                                itemset="imageset">
+                            </ng-reactions>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+	<div class="jumbotron">
+      <div class="container">
+        <h1>Quick start</h1>
+         <p>
+		 
+<pre>
+bower install ng-reactions
+</pre> <br>
+or alternatively download and include `ngreactions.js.js` after `angular.min.js`. <br>
+
+Add the `ng-reactions` module as a dependency when creating your app, e.g. <br>
+
+<pre>
+var app = angular.module('myApp', ['ng-reactions']);`
+</pre><br>
+
+</br>
+<pre>
+Inject or use in controller
+
+<pre style="background:#fff;color:#3b3b3b">app.controller(<span style="color:#666">'reactionCtrl'</span>, <span style="color:#ff5600">function</span>(<span style="color:#069;font-weight:700">$</span>scope) {
+   
+   <span style="color:#af82d4">//cerate the reaction object with following fields, below is the list of reactions</span>
+   
+   <span style="color:#069;font-weight:700">$</span>scope.reactionList <span style="color:#069;font-weight:700">=</span> [{
+            selected: <span style="color:#666">'none'</span>,
+            minRating: <span style="color:#a8017e">1</span>,
+            readOnly: <span style="color:#a535ae">false</span>
+        },{
+            selected: <span style="color:#a8017e">1</span>,
+            minRating: <span style="color:#a8017e">1</span>,
+            readOnly: <span style="color:#a535ae">false</span>
+        },{
+            selected: <span style="color:#069;font-weight:700">-</span><span style="color:#a8017e">1</span>,
+            minRating: <span style="color:#a8017e">1</span>,
+            readOnly: <span style="color:#a535ae">true</span>
+        }];
+        
+        
+        <span style="color:#af82d4">// below is the image list used for the reaction, these are default set it can be modified according to requirement</span>
+        
+                <span style="color:#069;font-weight:700">$</span>scope.imageset <span style="color:#069;font-weight:700">=</span> [
+            {icon: <span style="color:#666">'static/images/emo_laugh.PNG'</span>, rating: <span style="color:#666">'3'</span>, name: <span style="color:#666">'Happy'</span>},
+            {icon: <span style="color:#666">'static/images/love.png'</span>, rating: <span style="color:#666">'1'</span>, name: <span style="color:#666">'OK'</span>},
+            {icon: <span style="color:#666">'static/images/smile.png'</span>, rating: <span style="color:#666">'2'</span>, name: <span style="color:#666">'Good'</span>},
+            {icon: <span style="color:#666">'static/images/sad.png'</span>, rating: <span style="color:#666">'0'</span>, name: <span style="color:#666">'Bad'</span>},
+            {icon: <span style="color:#666">'static/images/angry.png'</span>, rating: <span style="color:#666">'-1'</span>, name: <span style="color:#666">'Frustrated'</span>}
+        ]
+        
+        <span style="color:#af82d4">// below is the icon list used for the reaction, these are default set. except icon other values can be modified.</span>
+        
+         <span style="color:#069;font-weight:700">$</span>scope.iconset <span style="color:#069;font-weight:700">=</span> [
+                {icon: <span style="color:#666">'ra-medium reaction-happy'</span>, rating: <span style="color:#666">'3'</span>, name:<span style="color:#666">'Happy'</span>},
+                {icon: <span style="color:#666">'ra-medium reaction-neutral'</span>, rating: <span style="color:#666">'1'</span>,name:<span style="color:#666">'OK'</span>},
+                {icon: <span style="color:#666">'ra-medium reaction-smile'</span>, rating: <span style="color:#666">'2'</span>,name:<span style="color:#666">'Good'</span>},
+                {icon: <span style="color:#666">'ra-medium reaction-sad'</span>, rating: <span style="color:#666">'0'</span>,name:<span style="color:#666">'Bad'</span>},
+                {icon: <span style="color:#666">'ra-medium reaction-frustrated'</span>, rating: <span style="color:#666">'-1'</span>,name:<span style="color:#666">'Frustrated'</span>}
+            ]
+            
+        <span style="color:#af82d4">// this is the callback function called on selection of the reactions</span>
+        
+        <span style="color:#a535ae">$scope</span>.<span style="color:#21439c">ratingsCallback</span> <span style="color:#069;font-weight:700">=</span> <span style="color:#ff5600">function</span>(reactionsObject,selected) {
+            <span style="color:#21439c">console</span><span style="color:#45ae34;font-weight:700">.log</span>(<span style="color:#666">'Selected rating is : '</span><span style="color:#069;font-weight:700">+</span>JSON.stringify(selected));
+            <span style="color:#21439c">console</span><span style="color:#45ae34;font-weight:700">.log</span>(<span style="color:#666">'reactionsObject : '</span><span style="color:#069;font-weight:700">+</span>JSON.stringify(reactionsObject));
+        };
+    
+}); 
+</pre>
+</pre>
+
+
+<pre>
+ In Html
+<pre style="background:#fff;color:#3b3b3b"><span style="color:#7a7a7a">&lt;<span style="color:#016cff">h4</span>></span> font reactions <span style="color:#7a7a7a">&lt;/<span style="color:#016cff">h4</span>></span>
+<span style="color:#7a7a7a">&lt;<span style="color:#016cff">div</span> <span style="color:#963dff">ng-controller</span>=<span style="color:#666">"reactionCtrl"</span>></span>
+    <span style="color:#7a7a7a">&lt;<span style="color:#016cff">div</span> <span style="color:#963dff">ng-repeat</span>=<span style="color:#666">"reaction in reactionList"</span>></span>
+        <span style="color:#7a7a7a">&lt;<span style="color:#016cff">ng</span><span style="color:#963dff">-reactions</span> 
+            <span style="color:#963dff">action</span>=<span style="color:#666">"ratingsCallback(reactionsObject,selected)"</span> 
+            <span style="color:#963dff">data</span>=<span style="color:#666">'reaction'</span> 
+            <span style="color:#963dff">type</span>=<span style="color:#666">"icon"</span> 
+            <span style="color:#963dff">itemset</span>=<span style="color:#666">"iconset"</span>></span>
+        <span style="color:#7a7a7a">&lt;/<span style="color:#016cff">ng</span><span style="color:#963dff">-reactions</span>></span>
+    <span style="color:#7a7a7a">&lt;/<span style="color:#016cff">div</span>></span>
+<span style="color:#7a7a7a">&lt;/<span style="color:#016cff">div</span>></span>
+
+<span style="color:#7a7a7a">&lt;<span style="color:#016cff">h4</span>></span> Image reactions <span style="color:#7a7a7a">&lt;/<span style="color:#016cff">h4</span>></span>
+<span style="color:#7a7a7a">&lt;<span style="color:#016cff">div</span>   <span style="color:#963dff">ng-controller</span>=<span style="color:#666">"reactionCtrl"</span>></span>
+    <span style="color:#7a7a7a">&lt;<span style="color:#016cff">div</span> <span style="color:#963dff">ng-repeat</span>=<span style="color:#666">"reaction in reactionList"</span>></span>
+        <span style="color:#7a7a7a">&lt;<span style="color:#016cff">ng</span><span style="color:#963dff">-reactions</span> 
+            <span style="color:#963dff">action</span>=<span style="color:#666">"ratingsCallback(reactionsObject,selected)"</span> 
+            <span style="color:#963dff">data</span>=<span style="color:#666">'reaction'</span> 
+            <span style="color:#963dff">type</span>=<span style="color:#666">"image"</span>  
+            <span style="color:#963dff">itemset</span>=<span style="color:#666">"imageset"</span>></span>
+        <span style="color:#7a7a7a">&lt;/<span style="color:#016cff">ng</span><span style="color:#963dff">-reactions</span>></span>
+    <span style="color:#7a7a7a">&lt;/<span style="color:#016cff">div</span>></span>
+<span style="color:#7a7a7a">&lt;/<span style="color:#016cff">div</span>></span>
+</pre>
+</pre>
+
+		 </p>
+      </div>
+    </div>
+		
+    </body>
+</html>

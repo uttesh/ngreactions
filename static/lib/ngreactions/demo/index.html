@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="ngReactionsApp">
+    <head>
+        <meta charset="utf-8" />
+        <title>ngreactions</title>
+        <!--        <link rel="icon" href="static/images/logo.png" type="image/png">-->
+        <script src="static/lib/jquery.js"></script>
+        <script src="static/lib/angular.js"></script>
+        <script src="../ngreactions.js"></script>
+        <script src="static/js/app.js"></script>
+        <link rel="stylesheet" href="static/css/bootstrap/css/bootstrap-lumen.css" />
+        <link rel="stylesheet" href="static/css/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="static/css/font-reaction/font-reactions.css">
+    </head>
+    <body  style="margin: 0 25px 0; padding: 0 15px 0;">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+            <div class="container" >
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="height: inherit;" href="#"><i class="fa fa-check-circle-o" style="color:green"></i> Ng Reactions</a>
+                </div>
+            </div>
+            <a href="https://github.com/uttesh/ngreactions">
+                <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+        </div>
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <h1> <i class="fa fa-check-circle-o" style="color:green"></i>  ng-reactions</h1>
+                <p>Simple angularJS directive which will provide the rating through the reaction of the customer or anything which need rating
+                    . inspired from latest facebook reaction menu, using this we can create our own function related reactions and use as rating, images are custamozable </p>
+                <p><a class="btn btn-primary btn-lg" role="button" href="https://codeload.github.com/uttesh/ngreactions/zip/master"><i class="fa fa-download"></i> Download</a></p>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="container">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Sample</h3>
+                    </div>
+                    <div  id="reaction-font-div" class="panel-body" ng-controller="reactionCtrl">
+                        <div ng-repeat="reaction in reactionList">
+                            <ng-reactions 
+                                action="ratingsCallback(reactionsObject,selected)" 
+                                data='reaction' 
+                                type="icon" 
+                                itemset="iconset">
+                            </ng-reactions>
+                        </div>
+                    </div>
+                    
+                    <div  id="reaction-div" class="panel-body" ng-controller="reactionCtrl">
+                        <div ng-repeat="reaction in reactionList">
+                            <ng-reactions 
+                                action="ratingsCallback(reactionsObject,selected)" 
+                                data='reaction' 
+                                type="image"  
+                                itemset="imageset">
+                            </ng-reactions>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
