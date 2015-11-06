@@ -359,7 +359,7 @@ input::-moz-focus-inner {
     border-radius: 25px;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
-    width: 20%;
+    width: auto;
     text-align: center;
     padding: 2px;
 	margin:10px;
@@ -371,7 +371,7 @@ input::-moz-focus-inner {
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
     background: rgb(230, 230, 230);
-    width: 20%;
+    width: auto;
     text-align: center;
     padding: 2px;
 	margin:10px;
