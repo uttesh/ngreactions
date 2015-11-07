@@ -359,7 +359,7 @@ input::-moz-focus-inner {
     border-radius: 25px;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
-    width: 20%;
+    width: auto;
     text-align: center;
     padding: 2px;
 	margin:10px;
@@ -371,7 +371,7 @@ input::-moz-focus-inner {
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
     background: rgb(230, 230, 230);
-    width: 20%;
+    width: auto;
     text-align: center;
     padding: 2px;
 	margin:10px;
@@ -380,7 +380,7 @@ input::-moz-focus-inner {
 .drop-shadow {
     position: relative;
     float: left;
-    width: 20%;
+    width: auto;
     padding: 1em;
     background: #fff;
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
