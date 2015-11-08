@@ -9,7 +9,7 @@
     'use strict';
 
     var nra = angular.module('ng-reactions', []);
-
+   // Constants used in the directive functions to avoid the hardcoded values
     nra.constant('constants', {
         ORDER_BY: 'orderBy',
         RATING_FIELD: 'rating',
@@ -19,7 +19,13 @@
         NONE: 'none'
 
     });
-
+    /**
+     * directive which will create the reactions dynamically according to give reactions objects.
+     * 
+     * @reactionObj: which be populated with @attribute data values.
+     * @itemset: which is binded with @attribte itemset, itemset will be having the reactions object set along with the values.
+     * @callback: on user click event action will return to user callback function along with slected value and passed object
+     */
     nra.directive('ngReactions', function($compile, $filter, constants) {
         return {
             restrict: 'AE',
@@ -34,6 +40,11 @@
                 scope.selectedrating = (scope.reactionObj.selected === constants.NONE) ? scope.reactionObj.minRating : scope.reactionObj.selected;
                 scope.readOnly = scope.reactionObj.readOnly || false;
                 scope.sortedItems = $filter(constants.ORDER_BY)(scope.itemset, constants.RATING_FIELD);
+                /**
+                 * TODO: Its in the todos, functionality is to selected the reactions on slide instead of clicking on each reactions.
+                 * @param {type} parentid
+                 * @returns 
+                 */
                 scope.reactionslide = function(parentid) {
                     var currentEle = angular.element.find('#' + parentid);
                     var myElements = currentEle[0].children;
@@ -49,6 +60,14 @@
                         }
                     });
                 };
+                /**
+                 * On usr click even on the icon/image this function will be called, 
+                 * here we will process the event make the current event object to zoom and other icon/image to normal size i.e. to hightlight the selected item.
+                 * @param {type} $event
+                 * @param {type} val
+                 * @param {type} name
+                 * @returns {undefined}
+                 */
                 scope.ratingsClicked = function($event, val, name) {
                     console.log('ratingsClicked :' + angular.element($event.currentTarget) + " element name :" + name);
                     updateReactionText(angular.element($event.currentTarget).parent(), name);
@@ -73,6 +92,15 @@
         };
     });
 
+    /**
+     * this function will be used to populate the itemset of images for the directive
+     * 
+     * If seleted flag is set in the object that image will be selected by default along with the help text value.
+     * @param {type} sortedItems
+     * @param {type} selectedrating
+     * @param {type} readOnly
+     * @returns {unresolved}
+     */
     function populateImages(sortedItems, selectedrating, readOnly) {
         var milliseconds = new Date().getTime();
         var parent = angular.element("<div></div>");
@@ -113,6 +141,18 @@
         var _cleanText = parent.html();
         return _cleanText;
     }
+    
+    /**
+     *  This function will called by the link function if the type is set to "icon"
+     *  
+     *  This function will load the default icon set present in the reactions fonts. this fonts set is con not be modified
+     *  because this function is tightly coupled with link function.
+     * @param {type} itemset
+     * @param {type} selectedrating
+     * @param {type} readOnly
+     * @param {type} constants
+     * @returns {unresolved}
+     */
     function  populateIcons(itemset, selectedrating, readOnly, constants) {
         console.log(constants.RATING_FIELD);
         var milliseconds = new Date().getTime();
@@ -127,7 +167,7 @@
             var span = angular.element('<span></span>')
                     .attr({
                         'class': 'ripple ' + value.icon,
-						'style': readOnly == false ? 'cursor: pointer;' : 'cursor:default;',
+			'style': readOnly == false ? 'cursor: pointer;' : 'cursor:default;',
                         'rating': value.rating,
                         'ng-click': readOnly == false ? 'ratingsClicked($event,' + value.rating + ',"' + value.name + '")' : '',
                     });
@@ -146,7 +186,12 @@
         var _cleanText = parent.html();
         return _cleanText;
     }
-
+    /**
+     * TODOS:
+     * This function will populate the slider acording to the given iconset value and create the slider points
+     * @param {type} sortedItems
+     * @returns {unresolved}
+     */
     function populateSlider(sortedItems) {
         var milliseconds = new Date().getTime();
         var length = sortedItems.length;
@@ -171,7 +216,11 @@
         reaction_slider_div.append(populateDataList(sortedItems));
         return reaction_slider_div;
     }
-
+    /**
+     * This function is internally used for the slider function
+     * @param {type} itemset
+     * @returns {_L8.populateDataList.datalist}
+     */
     function populateDataList(itemset) {
         var datalist = angular.element("<datalist></datalist>")
                 .attr({
@@ -184,7 +233,12 @@
 
         return datalist[0];
     }
-
+   /**
+    * TODOs: need to work on this to make generic in future
+    * This function is used for the icon change on use event, due to this hardcoded icon values here we can not modify the iconset.
+    * @param {type} element
+    * @returns {unresolved}
+    */
     function  swapSelectedIcon(element) {
         var _class = element.attr('class');
         if (_class.indexOf("reaction-happy") > -1) {
@@ -215,18 +269,36 @@
     }
     ;
 
+    /**
+     * this function will used to zoom the seleted image.
+     * @param {type} element
+     * @returns {unresolved}
+     */
     function  zoomSelectedItem(element) {
         var _class = element.attr('class');
         element.removeClass("ra-image-default-size");
         element.addClass("ra-selected ra-image-selected-size");
         return element;
     }
-
+    /**
+     * 
+     * this function will updated the help text values according to selected reaction
+     * 
+     * @param {type} element
+     * @param {type} name
+     * @returns {undefined}
+     */
     function updateReactionText(element, name) {
         var spanHelpTextElement = angular.element(element).parent().find('.help-text');
         angular.element(spanHelpTextElement[0]).text(name);
     }
 
+    /**
+     * This function will reset other icons on selection of icon
+     * 
+     * @param {type} element
+     * @returns {undefined}
+     */
     function resetOtherIcons(element) {
         var myElements = angular.element(element).parent().find('.ra-selected');
         angular.forEach(myElements, function(value, key) {
@@ -237,6 +309,11 @@
         });
     }
 
+    /**
+     * Validate the required attribute are set or not
+     * @param {type} attrs
+     * @returns {Number}
+     */
 
     function configValidate(attrs) {
         if (!attrs.action) {

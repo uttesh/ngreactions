@@ -8,7 +8,7 @@ myapp.controller("reactionCtrl", ['$scope', function($scope) {
             minRating: 1,
             readOnly: false
         },{
-            selected: 1,
+            selected: 3,
             minRating: 1,
             readOnly: false
         },{
@@ -22,7 +22,8 @@ myapp.controller("reactionCtrl", ['$scope', function($scope) {
             {icon: 'static/images/love.png', rating: '1', name: 'OK'},
             {icon: 'static/images/smile.png', rating: '2', name: 'Good'},
             {icon: 'static/images/sad.png', rating: '0', name: 'Bad'},
-            {icon: 'static/images/angry.png', rating: '-1', name: 'Frustrated'}
+            {icon: 'static/images/angry.png', rating: '-2', name: 'Frustrated'},
+			{icon: 'static/images/intolerance.jpg', rating: '-1', name: 'Intolerance'}
         ]
         
         $scope.iconset = [

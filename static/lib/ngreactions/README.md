@@ -1,4 +1,4 @@
-# ngreations
+# ngreations <a href="http://uttesh.github.io/ngreactions/">demo</a>
 
 Is an Angular directive for reactions like rating on services, which will allow customers to choose the reaction on the service like the latest facebook reactions, its fully customizable directive, can integrate any images instead of default.
 
@@ -9,10 +9,14 @@ Font icon not not customoizable only images.
 ```
 bower install ng-reactions
 ```
-or alternatively download and include `ng-reactions.js` after `angular.min.js`.
+or alternatively download and include `ngreactions.js` after `angular.min.js`.
 
+include the js ngreactions.js and font-reactions.css file in respective file
+```
+<script src="../ngreactions.js"></script>
+<link rel="stylesheet" href="../css/font-reaction/font-reactions.css">
+```
 Add the `ng-reactions` module as a dependency when creating your app, e.g.
-
 ```
 var app = angular.module('myApp', ['ng-reactions']);`
 

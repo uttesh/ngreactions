@@ -22,7 +22,8 @@ myapp.controller("reactionCtrl", ['$scope', function($scope) {
             {icon: 'static/lib/ngreactions/css/images/love.png', rating: '1', name: 'OK'},
             {icon: 'static/lib/ngreactions/css/images/smile.png', rating: '2', name: 'Good'},
             {icon: 'static/lib/ngreactions/css/images/sad.png', rating: '0', name: 'Bad'},
-            {icon: 'static/lib/ngreactions/css/images/angry.png', rating: '-1', name: 'Frustrated'}
+            {icon: 'static/lib/ngreactions/css/images/angry.png', rating: '-2', name: 'Frustrated'},
+			{icon: 'static/lib/ngreactions/css/images/intolerance.jpg', rating: '-1', name: 'Intolerance'}
         ]
         
         $scope.iconset = [
