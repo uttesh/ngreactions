@@ -11,15 +11,11 @@ bower install ng-reactions
 ```
 or alternatively download and include `ngreactions.js` after `angular.min.js`.
 
-
+include the js ngreactions.js and font-reactions.css file in respective file
 ```
 <script src="../ngreactions.js"></script>
 <link rel="stylesheet" href="../css/font-reaction/font-reactions.css">
 ```
-
-include the js ngreactions.js and font-reactions.css file in respective file
-
-
 Add the `ng-reactions` module as a dependency when creating your app, e.g.
 ```
 var app = angular.module('myApp', ['ng-reactions']);`
