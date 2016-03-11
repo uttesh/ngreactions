@@ -207,7 +207,6 @@
     height:400px;
     width:500px;
     background:#f45673;
-
 }
 
 .ripple{
@@ -217,11 +216,9 @@
 .ripple-effect{
     position: absolute;
     border-radius: 50%;
-    width: 50;
-    height: 50;
+    width: 50px;
+    height: 50px;
     background: white;
-
-
     animation: ripple-animation 2s;
 }
 
@@ -344,7 +341,6 @@ input::-moz-focus-inner {
 }
 
 .ra-image-selected-size{
-    //display: block;
     height: 50px;
     width: 50px;
     -webkit-transition: opacity 100ms linear;
@@ -352,7 +348,6 @@ input::-moz-focus-inner {
     -o-transition: opacity 100ms linear;
     -ms-transition: opacity 100ms linear;
     transition: opacity 100ms linear;
-    
 }
 
 .ra-icon-div {
@@ -435,7 +430,7 @@ input::-moz-focus-inner {
 [data-tooltip]:after {
   visibility: hidden;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
   opacity: 0;
   pointer-events: none;
 }
@@ -482,7 +477,7 @@ input::-moz-focus-inner {
 [data-tooltip]:hover:after {
   visibility: visible;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
   opacity: 1;
 }
 
